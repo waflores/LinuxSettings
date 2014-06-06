@@ -5,4 +5,5 @@ set shiftwidth=4
 set expandtab
 set bg=dark
 set ruler
+set backspace=indent,eol,start
 syntax on
