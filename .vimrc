@@ -6,4 +6,5 @@ set expandtab
 set bg=dark
 set ruler
 set backspace=indent,eol,start
+set hlsearch
 syntax on
