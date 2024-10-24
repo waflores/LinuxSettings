@@ -1,9 +1,4 @@
 { pkgs }:
 
-let
-  nixTools = with pkgs; [
-    cachix
-    direnv
-  ];
-in
-nixTools
+let nixTools = with pkgs; [ cachix direnv ];
+in nixTools
