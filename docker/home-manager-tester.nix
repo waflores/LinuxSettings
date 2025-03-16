@@ -7,18 +7,25 @@ pkgs.dockerTools.buildImageWithNixDb
   # tag = "20250315";
   # uid = 1000;
   # gid = 1000;
-  copyToRoot = with pkgs; [
-    fakeNss
-    # pkgs.fakeNss.override
-    # {
-    #   extraPasswdLines = [ "newuser:x:9001:9001:new user:/var/empty:/bin/sh" ];
-    #   extraGroupLines = [ "newuser:x:9001:" ];
+  copyToRoot = pkgs.buildEnv {
+    name = "home-manager-root";
+    paths = with pkgs; [
+      coreutils
+      dockerTools.binSh
+      jq
+      nixVersions.latest
+      (fakeNss.override
+        {
+          extraPasswdLines = [ "newuser:x:9001:9001:new user:/var/empty:/bin/sh" ];
+          extraGroupLines = [ "newuser:x:9001:" ];
 
-    # }
-    dockerTools.binSh
-    stdenv
+        })
+      nix-output-monitor
 
-  ];
+    ];
+    pathsToLink = [ "/bin" ];
+
+  };
   config = {
     # Cmd = [ "${pkgs.hello}/bin/hello" ];
     # WorkingDir = "/data";
