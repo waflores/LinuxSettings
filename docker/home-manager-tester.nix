@@ -11,21 +11,22 @@ pkgs.dockerTools.buildImageWithNixDb
     name = "home-manager-root";
     paths = with pkgs; [
       coreutils
+      bash
       dockerTools.binSh
       jq
       nixVersions.latest
       (fakeNss.override
         {
-          extraPasswdLines = [ "newuser:x:9001:9001:new user:/var/empty:/bin/sh" ];
-          extraGroupLines = [ "newuser:x:9001:" ];
+          extraPasswdLines = [ "will:x:1000:1000:Will:/home/will:/bin/bash" ];
+          extraGroupLines = [ "will:x:1000:" ];
 
         })
       nix-output-monitor
 
     ];
-    pathsToLink = [ "/bin" ];
-
+    pathsToLink = [ "/bin" "/etc" "/var" "/home" ];
   };
+
   config = {
     # Cmd = [ "${pkgs.hello}/bin/hello" ];
     # WorkingDir = "/data";
