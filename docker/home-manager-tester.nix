@@ -12,6 +12,7 @@ pkgs.dockerTools.buildLayeredImageWithNixDb {
     coreutils
     bash
     dockerTools.binSh
+    dockerTools.caCertificates
     jq
     nixVersions.latest
     (fakeNss.override
@@ -22,7 +23,6 @@ pkgs.dockerTools.buildLayeredImageWithNixDb {
       })
     nix-output-monitor
     # TODO @(WFlores - 2025-03-15): setup nix.conf
-    # TODO @(WFlores - 2025-03-15): setup cacerts
   ];
   # We need fakeRootCommands to change the permissions
   fakeRootCommands = ''
@@ -34,11 +34,12 @@ pkgs.dockerTools.buildLayeredImageWithNixDb {
     chown -Rv will:will /home/will
   '';
   enableFakechroot = true;
+  # End /nix and homedir creation
 
   config = {
     # Cmd = [ "${pkgs.hello}/bin/hello" ];
     WorkingDir = "/home/will";
-    User = "will";
+    User = "will:will";
     # Volumes = { "/data" = { }; }
   };
   maxLayers = 2;
