@@ -1,6 +1,13 @@
+# Nix-based Home Manager Configuration
+# This configuration will setup the following:
+#   - vimrc
+#   - gitconfig
+#   - bash settings
+# We should have the bashrc configure colors based on hostnames.
 {
   description = "Will's Home Manager Configuration";
 
+  #
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
     home-manager = {
@@ -14,7 +21,7 @@
   outputs = { self, nixpkgs, home-manager }:
     let
       # Values you should modify
-      username = "change-me-plz"; # $USER
+      username = "will"; # $USER
       system = "x86_64-linux"; # x86_64-linux, aarch64-multiplatform, etc.
       stateVersion =
         "24.05"; # See https://nixos.org/manual/nixpkgs/stable for most recent
