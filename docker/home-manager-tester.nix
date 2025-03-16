@@ -21,7 +21,20 @@ pkgs.dockerTools.buildLayeredImageWithNixDb {
 
       })
     nix-output-monitor
+    # TODO @(WFlores - 2025-03-15): setup nix.conf
+    # TODO @(WFlores - 2025-03-15): setup cacerts
   ];
+  # We need fakeRootCommands to change the permissions
+  fakeRootCommands = ''
+    ${pkgs.dockerTools.shadowSetup}
+    groupadd -r will
+    useradd -r -g will will
+    chown -Rv will:will /nix
+    mkdir -p /home/will
+    chown -Rv will:will /home/will
+  '';
+  enableFakechroot = true;
+
   config = {
     # Cmd = [ "${pkgs.hello}/bin/hello" ];
     WorkingDir = "/home/will";
