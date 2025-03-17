@@ -30,16 +30,16 @@
         inherit system;
 
         config = { allowUnfree = true; };
+        overlays = [ ];
       };
 
-      homeDirPrefix =
-        if pkgs.stdenv.hostPlatform.isDarwin then "/Users" else "/home";
-      homeDirectory = "/${homeDirPrefix}/${username}";
+      homeDirectory = "/home/${username}";
 
       home = (import ./home.nix {
         inherit homeDirectory pkgs stateVersion system username;
       });
-    in {
+    in
+    {
       formatter.x86_64-linux = pkgs.nixpkgs-fmt;
 
       homeConfigurations.${username} =

@@ -3,6 +3,9 @@
 }:
 let
   inherit (pkgs) bashInteractive cacert coreutils dockerTools lib writeText;
+  username = "will";
+  full_name = "Will";
+
   shell = "${bashInteractive}/bin/bash";
 
   staticPath = ''${dirOf shell}:${lib.makeBinPath [ coreutils ]}'';
@@ -77,20 +80,25 @@ let
 
     # Give us a locale
     LANG = "en_US.UTF-8";
+
+    # We have a user
+    USER = username;
   };
 
 
 in
-dockerTools.buildLayeredImageWithNixDb {
+dockerTools.buildLayeredImageWithNixDb rec {
   name = "home-manager-testenv";
   uid = 1000;
   gid = 1000;
-  uname = "will";
-  gname = "will";
+  uname = username;
+  gname = username;
   contents = with pkgs;
     [
-      coreutils
       bash
+      btop
+      busybox
+      coreutils
       dockerTools.binSh
       dockerTools.caCertificates
       home-manager
@@ -98,8 +106,8 @@ dockerTools.buildLayeredImageWithNixDb {
       nixVersions.latest
       (fakeNss.override
         {
-          extraPasswdLines = [ "will:x:1000:1000:Will:/home/will:/bin/bash" ];
-          extraGroupLines = [ "will:x:1000:" ];
+          extraPasswdLines = [ "${uname}:x:1000:1000:${full_name}:${homeDirectory}:/bin/bash" ];
+          extraGroupLines = [ "${uname}:x:1000:" ];
 
         })
       nix-output-monitor
@@ -107,15 +115,26 @@ dockerTools.buildLayeredImageWithNixDb {
 
   # We need fakeRootCommands to change the permissions of the nix store and our homeDirectory
   fakeRootCommands = ''
+    # Populate the groups and what not
     ${pkgs.dockerTools.shadowSetup}
-    groupadd -r will
-    useradd -r -g will will
-    chown -Rv will:will /nix
+    groupadd -r ${gname}
+    useradd -r -g ${gname} ${uname}
+    
+    # make user own nix store
+    chown -Rv ${uname}:${gname} /nix
+    
+    # make our home directory
     mkdir -p ${homeDirectory}
-    chown -Rv will:will ${homeDirectory}
+    chown -Rv ${uname}:${gname} ${homeDirectory}
+    
+    # prep bashrc and nixConfig file
     ln -s ${rcfile.outPath} /etc/bashrc
     mkdir -p /etc/nix
     ln -s ${nixconf.outPath} /etc/nix/nix.conf
+
+    # make our temp dirs
+    mkdir -p ${sandboxBuildDir}
+    chown -v ${uname}:${gname} ${sandboxBuildDir}
   '';
   enableFakechroot = true;
   # End /nix and homeDirectory creation
@@ -123,7 +142,7 @@ dockerTools.buildLayeredImageWithNixDb {
   config = {
     Cmd = [ shell "--rcfile" rcfile ];
     WorkingDir = homeDirectory;
-    User = "will:will";
+    User = "${uname}:${gname}";
     Env = lib.mapAttrsToList (name: value: "${name}=${value}") envVars;
   };
   maxLayers = 2;
