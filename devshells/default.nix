@@ -24,7 +24,7 @@ pkgs.mkShell {
       ruff
       vim
     ]
-    ++ pkgs.lib.options (perSystem != null) [ perSystem.blueprint.default ];
+    ++ (pkgs.lib.optionals (perSystem != null) [ perSystem.blueprint.default ]);
   shellHook = ''
     echo "shell defined in our blueprint!"
   '';
