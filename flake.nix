@@ -49,7 +49,6 @@
   outputs =
     {
       nixpkgs,
-      nixpkgs-git-lfs,
       home-manager,
       treefmt-nix,
       ...
@@ -77,14 +76,14 @@
       homeDirectory = "/home/${username}";
 
       home = import ./home.nix {
-          inherit
-            homeDirectory
-            pkgs
-            stateVersion
-            system
-            username
-            ;
-        };
+        inherit
+          homeDirectory
+          pkgs
+          stateVersion
+          system
+          username
+          ;
+      };
 
       # Eval the treefmt modules from ./treefmt.nix
       treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
@@ -100,7 +99,6 @@
 
       devShells.${system}.default = pkgs.callPackage ./shell.nix {
         packages = [
-          # self.treefmt.build.wrapper
           pkgs.shellcheck
         ];
       };
