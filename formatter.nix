@@ -17,6 +17,14 @@ inputs.treefmt-nix.lib.mkWrapper pkgs {
     yamlfmt.enable = true;
   };
 
+  settings.global.excludes = [
+    "LICENSE"
+    # let's not mess with the test folder
+    "test/*"
+    # unsupported extensions
+    "*.{gif,png,svg,tape,mts,lock,mod,sum,toml,env,envrc,gitignore,pages}"
+  ];
+
   # settings.formatter = {
   #   shellcheck.includes = [ "direnvrc" ];
   #   shfmt.includes = [ "direnvrc" ];

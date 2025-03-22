@@ -1,9 +1,12 @@
 # Using mkShell from nixpkgs
-{ pkgs, packages, ... }:
+{
+  pkgs,
+  ...
+}:
 with pkgs;
 mkShell {
   name = "willsBluePrint";
-  packages = packages ++ [
+  packages = [
     bashInteractive
     python3.pkgs.pytest
     python3.pkgs.mypy
@@ -19,8 +22,7 @@ mkShell {
     tree
     vim
   ];
-  # shellHook = ''
-  #   echo "shell defined in our blueprint!"
-  # '';
-
+  shellHook = ''
+    echo "shell defined in our blueprint!"
+  '';
 }
