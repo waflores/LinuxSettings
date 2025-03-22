@@ -1,9 +1,3 @@
-# Nix-based Home Manager Configuration
-# This configuration will setup the following:
-#   - vimrc
-#   - gitconfig
-#   - bash settings
-# We should have the bashrc configure colors based on hostnames.
 {
   description = "Will's Development System Configurations";
 
@@ -28,60 +22,10 @@
   }; # End inputs
 
   outputs =
-    {
-      nixpkgs,
-      home-manager,
-      treefmt-nix,
-      ...
-    }:
-    let
-      # Values you should modify
-      username = "will"; # $USER
-
-      # There's some hosts where our username is not the same.
-      system = "x86_64-linux";
-
-      # See https://nixos.org/manual/nixpkgs/stable for most recent
-      stateVersion = "24.11";
-
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-        };
-        overlays = [ ];
-      };
-
-      homeDirectory = "/home/${username}";
-
-      home = import ./home.nix {
-        inherit
-          homeDirectory
-          pkgs
-          stateVersion
-          system
-          username
-          ;
-      };
-
-      # Eval the treefmt modules from ./treefmt.nix
-      treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-    in
-    {
-
-      formatter.${system} = treefmtEval.config.build.wrapper;
-
-      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ home ];
-      };
-
-      devShells.${system}.default = pkgs.callPackage ./shell.nix {
-        packages = [
-          pkgs.shellcheck
-        ];
-      };
-
+    inputs:
+    inputs.blueprint {
+      inherit inputs;
+      systems = [ "x86_64-linux" ];
     };
 }
 
