@@ -5,8 +5,6 @@ inputs.treefmt-nix.lib.mkWrapper pkgs {
 
   programs = {
     deadnix.enable = true;
-    deno.enable = true;
-    mypy.enable = true;
     ruff.check = true;
     ruff.format = true;
     nixfmt.enable = true;

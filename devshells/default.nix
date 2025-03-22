@@ -1,27 +1,30 @@
 # Using mkShell from nixpkgs
 {
   pkgs,
+  perSystem ? null,
   ...
 }:
-with pkgs;
-mkShell {
+pkgs.mkShell {
   name = "willsBluePrint";
-  packages = [
-    bashInteractive
-    python3.pkgs.pytest
-    python3.pkgs.mypy
-    ruff
-    direnv
-    nix-output-monitor
-    btop
-    cmake
-    fzf
-    jdk8
-    ninja
-    ncdu
-    tree
-    vim
-  ];
+  packages =
+    with pkgs;
+    [
+      bashInteractive
+      btop
+      cachix
+      cmake
+      direnv
+      fzf
+      jdk8
+      ninja
+      nix-output-monitor
+      ncdu
+      ripgrep
+      tree
+      ruff
+      vim
+    ]
+    ++ pkgs.lib.options (perSystem != null) [ perSystem.blueprint.default ];
   shellHook = ''
     echo "shell defined in our blueprint!"
   '';
