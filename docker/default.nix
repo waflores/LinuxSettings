@@ -1,8 +1,19 @@
 # home-manager-tetser.nix - environment to test out our changes to our dotfiles
-{ pkgs ? import <nixpkgs> { config = { }; overlays = [ ]; }
+{
+  pkgs ? import <nixpkgs> {
+    config = { };
+    overlays = [ ];
+  },
 }:
 let
-  inherit (pkgs) bashInteractive cacert coreutils dockerTools lib writeText;
+  inherit (pkgs)
+    bashInteractive
+    cacert
+    coreutils
+    dockerTools
+    lib
+    writeText
+    ;
   username = "will";
   full_name = "Will";
 
@@ -85,7 +96,6 @@ let
     USER = username;
   };
 
-
 in
 dockerTools.buildLayeredImageWithNixDb rec {
   name = "home-manager-testenv";
@@ -93,25 +103,23 @@ dockerTools.buildLayeredImageWithNixDb rec {
   gid = 1000;
   uname = username;
   gname = username;
-  contents = with pkgs;
-    [
-      bash
-      btop
-      busybox
-      coreutils
-      dockerTools.binSh
-      dockerTools.caCertificates
-      home-manager
-      jq
-      nixVersions.latest
-      (fakeNss.override
-        {
-          extraPasswdLines = [ "${uname}:x:1000:1000:${full_name}:${homeDirectory}:/bin/bash" ];
-          extraGroupLines = [ "${uname}:x:1000:" ];
+  contents = with pkgs; [
+    bash
+    btop
+    busybox
+    coreutils
+    dockerTools.binSh
+    dockerTools.caCertificates
+    home-manager
+    jq
+    nixVersions.latest
+    (fakeNss.override {
+      extraPasswdLines = [ "${uname}:x:1000:1000:${full_name}:${homeDirectory}:/bin/bash" ];
+      extraGroupLines = [ "${uname}:x:1000:" ];
 
-        })
-      nix-output-monitor
-    ];
+    })
+    nix-output-monitor
+  ];
 
   # We need fakeRootCommands to change the permissions of the nix store and our homeDirectory
   fakeRootCommands = ''
@@ -119,14 +127,14 @@ dockerTools.buildLayeredImageWithNixDb rec {
     ${pkgs.dockerTools.shadowSetup}
     groupadd -r ${gname}
     useradd -r -g ${gname} ${uname}
-    
+
     # make user own nix store
     chown -Rv ${uname}:${gname} /nix
-    
+
     # make our home directory
     mkdir -p ${homeDirectory}
     chown -Rv ${uname}:${gname} ${homeDirectory}
-    
+
     # prep bashrc and nixConfig file
     ln -s ${rcfile.outPath} /etc/bashrc
     mkdir -p /etc/nix
@@ -140,7 +148,11 @@ dockerTools.buildLayeredImageWithNixDb rec {
   # End /nix and homeDirectory creation
 
   config = {
-    Cmd = [ shell "--rcfile" rcfile ];
+    Cmd = [
+      shell
+      "--rcfile"
+      rcfile
+    ];
     WorkingDir = homeDirectory;
     User = "${uname}:${gname}";
     Env = lib.mapAttrsToList (name: value: "${name}=${value}") envVars;

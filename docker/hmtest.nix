@@ -11,33 +11,35 @@ let
 in
 pkgs.nixosTest {
   name = "test1";
-  nodes.machine = { config, pkgs, ... }: {
-    imports = [
-      (import "${home-manager}/nixos")
-    ];
-
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
-
-    services.xserver.enable = true;
-    services.xserver.displayManager.gdm.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
-
-    users.users.alice = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    };
-
-    home-manager.users.alice = {
-      home.packages = [
-        pkgs.firefox
-        pkgs.thunderbird
+  nodes.machine =
+    { pkgs, ... }:
+    {
+      imports = [
+        (import "${home-manager}/nixos")
       ];
-      home.stateVersion = "24.11";
-    };
 
-    system.stateVersion = "24.11";
-  };
+      boot.loader.systemd-boot.enable = true;
+      boot.loader.efi.canTouchEfiVariables = true;
+
+      services.xserver.enable = true;
+      services.xserver.displayManager.gdm.enable = true;
+      services.xserver.desktopManager.gnome.enable = true;
+
+      users.users.alice = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      };
+
+      home-manager.users.alice = {
+        home.packages = [
+          pkgs.firefox
+          pkgs.thunderbird
+        ];
+        home.stateVersion = "24.11";
+      };
+
+      system.stateVersion = "24.11";
+    };
   testScript = ''
     machine.start(allow_reboot = True)
     machine.wait_for_unit("default.target")

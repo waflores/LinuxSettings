@@ -1,5 +1,9 @@
 # home-manager-tetser.nix - environment to test out our changes to our dotfiles with a prebaked NixShell
-{ pkgs ? import <nixpkgs> { config = { }; overlays = [ ]; }
+{
+  pkgs ? import <nixpkgs> {
+    config = { };
+    overlays = [ ];
+  },
 }:
 let
   inherit (pkgs) dockerTools mkShellNoCC;

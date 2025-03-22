@@ -1,8 +1,9 @@
-{ homeDirectory
-, pkgs
-, stateVersion
-, system
-, username
+{
+  homeDirectory,
+  pkgs,
+  stateVersion,
+  system,
+  username,
 }:
 
 let
@@ -10,7 +11,12 @@ let
 in
 {
   home = {
-    inherit homeDirectory packages stateVersion username;
+    inherit
+      homeDirectory
+      packages
+      stateVersion
+      username
+      ;
 
     shellAliases = {
       # TODO(@waflores) 2024-10-04: Add the backup option here
