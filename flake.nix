@@ -4,13 +4,13 @@
   nixConfig.bash-prompt-suffix = "devshell-env> ";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/2bcb5a3c7cc0d62862f7d5f6ab6c589adac106fe";  # 24.11
     blueprint = {
       url = "github:numtide/blueprint/7ae8756a68c662d551e354beb537f365b80e5108";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/0948aeedc296f964140d9429223c7e4a0702a1ff";  # 24.11
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # NOTE(@waflores) 2024-11-26: pin the git-lfs for our BitBucket server.

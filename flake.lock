@@ -38,24 +38,24 @@
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-24.11",
         "repo": "home-manager",
+        "rev": "0948aeedc296f964140d9429223c7e4a0702a1ff",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1742735568,
-        "narHash": "sha256-979zbJFSn3aPWt5N+dt9N5n1BULL1W6sdoPEDGOSW4Y=",
+        "lastModified": 1742852774,
+        "narHash": "sha256-sDhUmptDufaDsJIpM7VLe/8utZ652UjveKP9fgKv9eo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0ab4a35ea3f79f11018702be57548589170f93f6",
+        "rev": "2bcb5a3c7cc0d62862f7d5f6ab6c589adac106fe",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "release-24.11",
         "repo": "nixpkgs",
+        "rev": "2bcb5a3c7cc0d62862f7d5f6ab6c589adac106fe",
         "type": "github"
       }
     },
