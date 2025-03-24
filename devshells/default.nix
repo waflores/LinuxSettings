@@ -23,8 +23,10 @@ pkgs.mkShell {
       tree
       ruff
       vim
-    ]
-    ++ (pkgs.lib.optionals (perSystem != null) [ perSystem.blueprint.default ]);
+    ];
+    # TODO (@waflores - 2025-03-22): perSystem.blueprint.default is not a valid attribute
+    #   need to debug why.
+    # ++ (pkgs.lib.optionals (perSystem != null) [ perSystem.blueprint ]);
   shellHook = ''
     echo "shell defined in our blueprint!"
   '';
