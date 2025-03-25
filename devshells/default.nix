@@ -18,6 +18,7 @@ pkgs.mkShell {
       jdk8
       ninja
       nix-output-monitor
+      nix-tree
       ncdu
       ripgrep
       tree
