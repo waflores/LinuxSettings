@@ -37,14 +37,14 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1742988026,
-        "narHash": "sha256-aofgJZ4GypThgHU79KuWbs1c/9+B/JkVGZ1NYAtBSp4=",
+        "lastModified": 1743080597,
+        "narHash": "sha256-UQwJgAe80hyILxk8sNSH2DCGDpHTYjtzld8uZv0nUes=",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/b107b36e150478e05bd06d50bcc4f2218df0257f.tar.gz"
+        "url": "https://github.com/NixOS/nixpkgs/archive/2332f3658f3f9c0b7c5c8357329c0737d5757331.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/b107b36e150478e05bd06d50bcc4f2218df0257f.tar.gz"
+        "url": "https://github.com/NixOS/nixpkgs/archive/2332f3658f3f9c0b7c5c8357329c0737d5757331.tar.gz"
       }
     },
     "nixpkgs-git-lfs": {
