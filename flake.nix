@@ -5,7 +5,8 @@
 
   inputs = {
     # nixpkgs.url = "github:NixOS/nixpkgs/2bcb5a3c7cc0d62862f7d5f6ab6c589adac106fe";  # 24.11
-    nixpkgs.url = "https://github.com/NixOS/nixpkgs/archive/2bcb5a3c7cc0d62862f7d5f6ab6c589adac106fe.tar.gz";  # 24.11
+    # nixpkgs.url = "https://github.com/NixOS/nixpkgs/archive/2bcb5a3c7cc0d62862f7d5f6ab6c589adac106fe.tar.gz";  # 24.11
+    nixpkgs.url = "https://github.com/NixOS/nixpkgs/archive/b107b36e150478e05bd06d50bcc4f2218df0257f.tar.gz";  # 25.05
     blueprint = {
       # url = "github:numtide/blueprint/7ae8756a68c662d551e354beb537f365b80e5108";
       url = "https://github.com/numtide/blueprint/archive/7ae8756a68c662d551e354beb537f365b80e5108.tar.gz";
@@ -13,7 +14,8 @@
     };
     home-manager = {
       # url = "github:nix-community/home-manager/0948aeedc296f964140d9429223c7e4a0702a1ff";  # 24.11
-      url = "https://github.com/nix-community/home-manager/archive/0948aeedc296f964140d9429223c7e4a0702a1ff.tar.gz";  # 24.11
+      # url = "https://github.com/nix-community/home-manager/archive/0948aeedc296f964140d9429223c7e4a0702a1ff.tar.gz";  # 24.11
+      url = "https://github.com/nix-community/home-manager/archive/693840c01b9bef9e54100239cef937e53d4661bf.tar.gz";  # 25.05
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # NOTE(@waflores) 2024-11-26: pin the git-lfs for our BitBucket server.
