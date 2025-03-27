@@ -59,12 +59,25 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/83667ff60a88e22b76ef4b0bdf5334670b39c2b6.tar.gz"
       }
     },
+    "nixpkgs-llvm_18": {
+      "locked": {
+        "lastModified": 1739525092,
+        "narHash": "sha256-dd5tkJn37gjU6rQD0q+O40zF7nADAVR3WZeb+cQ/9kQ=",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/b5befb85475250e7849341cc2d10233415c2a528.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/b5befb85475250e7849341cc2d10233415c2a528.tar.gz"
+      }
+    },
     "root": {
       "inputs": {
         "blueprint": "blueprint",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-git-lfs": "nixpkgs-git-lfs",
+        "nixpkgs-llvm_18": "nixpkgs-llvm_18",
         "treefmt-nix": "treefmt-nix"
       }
     },

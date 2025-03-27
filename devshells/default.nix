@@ -15,6 +15,7 @@ pkgs.mkShell {
       cmake
       direnv
       fzf
+      # home-manager  # llvm_18 is borked for some reason...
       jdk8
       ninja
       nix-output-monitor
