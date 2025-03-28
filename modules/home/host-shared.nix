@@ -47,16 +47,8 @@
         if [ -f ~/.oldbashrc ]; then
           . ~/.oldbashrc
         fi
-        alias use-bazel='unset LD_LIBRARY_PATH && eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rsa && eval "$(direnv hook bash)" && direnv allow'
+        alias use-direnv='unset LD_LIBRARY_PATH && eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rsa && eval "$(direnv hook bash)" && direnv allow'
         umask 002
-
-        # BEGIN ANSIBLE MANAGED BLOCK
-        if [ -f /opt/isi/var/mount.autoenv ]; then
-          if [[ -z "$SSH_CLIENT" ]]; then
-            source /opt/isi/var/mount.autoenv
-          fi
-        fi
-        # END ANSIBLE MANAGED BLOCK
       '';
 
       # initExtra runs third, then, bashrc run, finally initExtra runs.

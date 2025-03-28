@@ -15,12 +15,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # NOTE(@waflores) 2024-11-26: pin the git-lfs for our BitBucket server.
-    nixpkgs-git-lfs.url = "https://github.com/NixOS/nixpkgs/archive/83667ff60a88e22b76ef4b0bdf5334670b39c2b6.tar.gz";
+    nixpkgs-git-lfs.url = "https://github.com/NixOS/nixpkgs/archive/83667ff60a88e22b76ef4b0bdf5334670b39c2b6.tar.gz";  # git-lfs 2.13
     nixpkgs-llvm_18.url = "https://github.com/NixOS/nixpkgs/archive/b5befb85475250e7849341cc2d10233415c2a528.tar.gz";
 
     treefmt-nix = {
-      # url = "github:numtide/treefmt-nix/adc195eef5da3606891cedf80c0d9ce2d3190808";
       url = "https://github.com/numtide/treefmt-nix/archive/adc195eef5da3606891cedf80c0d9ce2d3190808.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -31,6 +29,7 @@
     inputs.blueprint {
       inherit inputs;
       nixpkgs.config.allowUnfree = true;
+      # TODO(@waflores - 2025-03-28): figure out how to deal with backing up automatically our config
       systems = [ "x86_64-linux" ];
     };
 }
