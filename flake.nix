@@ -4,14 +4,14 @@
   nixConfig.bash-prompt-suffix = "devshell-env> ";
 
   inputs = {
-    nixpkgs.url = "https://github.com/NixOS/nixpkgs/archive/2332f3658f3f9c0b7c5c8357329c0737d5757331.tar.gz";  # 24.11 - 2025-03-27
+    nixpkgs.url = "https://github.com/NixOS/nixpkgs/archive/b107b36e150478e05bd06d50bcc4f2218df0257f.tar.gz";  # 25.05 - 2025-03-26
     blueprint = {
       url = "https://github.com/numtide/blueprint/archive/7ae8756a68c662d551e354beb537f365b80e5108.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
-       url = "https://github.com/nix-community/home-manager/archive/0948aeedc296f964140d9429223c7e4a0702a1ff.tar.gz";  # 24.11 - 2025-03-22
+       url = "https://github.com/nix-community/home-manager/archive/693840c01b9bef9e54100239cef937e53d4661bf.tar.gz";  # 25.05 - 2025-03-26
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -32,10 +32,6 @@
       inherit inputs;
       nixpkgs.config.allowUnfree = true;
       systems = [ "x86_64-linux" ];
-      nixpkgs.overlays = [
-        (final: prev: { inherit (inputs.nixpkgs-llvm_18.${final.system}) llvm_18;})
-    ];
-
     };
 }
 

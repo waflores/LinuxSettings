@@ -1,7 +1,7 @@
 # Using mkShell from nixpkgs
 {
   pkgs,
-  perSystem ? null,
+  perSystem,
   ...
 }:
 pkgs.mkShell {
@@ -9,7 +9,6 @@ pkgs.mkShell {
   packages =
     with pkgs;
     [
-      perSystem.blueprint.default
       bashInteractive
       btop
       cachix
@@ -27,9 +26,7 @@ pkgs.mkShell {
       ruff
       vim
     ];
-    # TODO (@waflores - 2025-03-22): perSystem.blueprint.default is not a valid attribute
-    #   need to debug why.
-    # ++ (pkgs.lib.optionals (perSystem != null) [ perSystem.blueprint ]);
+
   shellHook = ''
     echo "shell defined in our blueprint!"
   '';
