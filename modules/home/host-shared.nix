@@ -11,5 +11,5 @@
       pkgs.lib.optionals (osConfig.programs.vim.enable && pkgs.stdenv.isDarwin) [ pkgs.skhd ]
     );
 
-  home.stateVersion = pkgs.lib.versions.majorMinor pkgs.lib.version; # initial home-manager state
+  home.stateVersion = "24.11"; # initial home-manager state
 }

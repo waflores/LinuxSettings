@@ -9,6 +9,7 @@ pkgs.mkShell {
   packages =
     with pkgs;
     [
+      perSystem.blueprint.default
       bashInteractive
       btop
       cachix
@@ -33,3 +34,5 @@ pkgs.mkShell {
     echo "shell defined in our blueprint!"
   '';
 }
+
+# https://github.com/numtide/blueprint/blob/main/docs/content/guides/configuring_direnv.md
