@@ -32,6 +32,10 @@
       inherit inputs;
       nixpkgs.config.allowUnfree = true;
       systems = [ "x86_64-linux" ];
+      nixpkgs.overlays = [
+        (final: prev: { inherit (inputs.nixpkgs-llvm_18.${final.system}) llvm_18;})
+    ];
+
     };
 }
 

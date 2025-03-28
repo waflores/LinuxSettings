@@ -2,14 +2,10 @@
 {
 
   # only available on linux, disabled on macos
-  services.ssh-agent.enable = pkgs.stdenv.isLinux;
+  services.ssh-agent.enable = true;
 
   home.packages =
-    [ pkgs.ripgrep ]
-    ++ (
-      # you can access the host configuration using osConfig.
-      pkgs.lib.optionals (osConfig.programs.vim.enable && pkgs.stdenv.isDarwin) [ pkgs.skhd ]
-    );
+    [ pkgs.ripgrep ];
 
   home.stateVersion = "24.11"; # initial home-manager state
 }
