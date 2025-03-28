@@ -1,31 +1,28 @@
 # Using mkShell from nixpkgs
 {
   pkgs,
-  perSystem,
   ...
 }:
 pkgs.mkShell {
   name = "willsBluePrint";
-  packages =
-    with pkgs;
-    [
-      bashInteractive
-      btop
-      cachix
-      cmake
-      direnv
-      fzf
-      # home-manager  # llvm_18 is borked for some reason...
-      jdk8
-      ninja
-      nix-output-monitor
-      nix-tree
-      # ncdu  # borked in nixpkgs 25.05
-      ripgrep
-      tree
-      ruff
-      vim
-    ];
+  packages = with pkgs; [
+    bashInteractive
+    btop
+    cachix
+    cmake
+    direnv
+    fzf
+    # home-manager  # llvm_18 is borked for some reason...
+    jdk8
+    ninja
+    nix-output-monitor
+    nix-tree
+    # ncdu  # borked in nixpkgs 25.05
+    ripgrep
+    tree
+    ruff
+    vim
+  ];
 
   shellHook = ''
     echo "shell defined in our blueprint!"

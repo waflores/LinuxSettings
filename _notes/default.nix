@@ -16,10 +16,10 @@ let
 
   pkgs = import nixpkgs { };
 in
- pkgs.mkShellNoCC {
-   packages = with pkgs; [
-     cowsay
-   ];
+pkgs.mkShellNoCC {
+  packages = with pkgs; [
+    cowsay
+  ];
 
   GREETING = "Hello, from default.nix!";
- }
+}
