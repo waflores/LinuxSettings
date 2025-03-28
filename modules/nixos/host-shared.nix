@@ -1,6 +1,10 @@
 { pkgs, ... }:
 {
 
+  home-manager = {
+    backupFileExtension = "bak";
+    verbose = true;
+  };
   programs.vim.enable = true;
 
   # you can check if host is darwin by using pkgs.stdenv.isDarwin
