@@ -10,6 +10,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # NOTE (@waflores - 2025-03-29): key configuration version data as follows:
+    # home.stateVersion is set in: modules/home/host-shared.nix
+    # system.stateVersion is set in:  hosts/*/configuration.nix
     home-manager = {
       url = "https://github.com/nix-community/home-manager/archive/693840c01b9bef9e54100239cef937e53d4661bf.tar.gz"; # 25.05 - 2025-03-26
       inputs.nixpkgs.follows = "nixpkgs";

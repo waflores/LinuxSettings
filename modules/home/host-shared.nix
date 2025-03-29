@@ -19,11 +19,6 @@
     bash = {
       enable = true;
       enableCompletion = true;
-      /**
-        Other shell options
-        sessionVariables
-        history
-      */
 
       shellAliases = {
         use-direnv = ''unset LD_LIBRARY_PATH && eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rsa && eval "$(direnv hook bash)" && direnv allow'';
