@@ -10,7 +10,6 @@
     jdk8
     ninja
     tree
-    vim
   ];
 
   home.stateVersion = "24.11"; # initial home-manager state
