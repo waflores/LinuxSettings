@@ -18,6 +18,8 @@
   programs = {
 
     bash = {
+      enable = true;
+      enableCompletion = true;
       /**
         Other shell options
         sessionVariables
@@ -28,9 +30,6 @@
         use-direnv = ''unset LD_LIBRARY_PATH && eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rsa && eval "$(direnv hook bash)" && direnv allow'';
         reload-home-manager-config = "${pkgs.lib.getExe pkgs.home-manager} switch --flake . -b 'bak' && exec bash";
       };
-      enable = true;
-
-      enableCompletion = false; # XXX keep the System configured verison
 
       # We took our original ~/.profile and renamed it to ~/.oldprofile
       # This runs first
@@ -106,6 +105,7 @@
     };
     ripgrep-all.enable = true;
     ripgrep.enable = true;
+    vim.enable = true;
 
   }; # End programs
 }

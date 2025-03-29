@@ -9,5 +9,4 @@
     verbose = true;
   };
 
-  programs.vim.enable = true;
 }

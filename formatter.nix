@@ -5,13 +5,18 @@ inputs.treefmt-nix.lib.mkWrapper pkgs {
 
   programs = {
     deadnix.enable = true;
+    dos2unix.enable = true;
+    keep-sorted.enable = true;
     ruff.check = true;
     ruff.format = true;
+    # mdformat.enable = true;
+    mdsh.enable = true;
     nixfmt.enable = true;
     nixfmt.package = pkgs.nixfmt-rfc-style;
     shellcheck.enable = true;
     shfmt.enable = true;
     statix.enable = true;
+    typos.enable = true;
     yamlfmt.enable = true;
   };
 
