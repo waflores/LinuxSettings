@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-
   # only available on linux, disabled on macos
   services.ssh-agent.enable = true;
 

@@ -1,8 +1,7 @@
-{ pkgs, ... }:
-{
-  environment.systemPackages = [
-    pkgs.btop
-  ];
+_: {
+  # environment.systemPackages = [
+  #   pkgs.btop
+  # ];
 
   home-manager = {
     backupFileExtension = "bak";
