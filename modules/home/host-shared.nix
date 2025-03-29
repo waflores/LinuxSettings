@@ -25,10 +25,14 @@
     bash = {
       /**
         Other shell options
-        shellAliases
         sessionVariables
         history
       */
+
+      shellAliases = {
+        use-direnv = ''unset LD_LIBRARY_PATH && eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rsa && eval "$(direnv hook bash)" && direnv allow'';
+        reload-home-manager-config = "${pkgs.lib.getExe pkgs.home-manager} switch --flake . -b 'bak' && exec bash";
+      };
       enable = true;
 
       enableCompletion = false; # XXX keep the System configured verison
@@ -47,7 +51,6 @@
         if [ -f ~/.oldbashrc ]; then
           . ~/.oldbashrc
         fi
-        alias use-direnv='unset LD_LIBRARY_PATH && eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rsa && eval "$(direnv hook bash)" && direnv allow'
         umask 002
       '';
 
@@ -73,11 +76,16 @@
       enableBashIntegration = true;
     };
 
-    # Add fzf to the eshell
+    # Add fzf to the shell
     # https://github.com/junegunn/fzf
     fzf = {
       enable = true;
       enableBashIntegration = true;
+    };
+
+    # Add home-manager to the shell
+    home-manager = {
+      enable = true;
     };
 
   }; # End programs
