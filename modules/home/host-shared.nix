@@ -5,15 +5,10 @@
   services.ssh-agent.enable = true;
 
   home.packages = with pkgs; [
-    ripgrep
-    # btop
     cmake
-    # direnv # May collide
-    fzf
     # git-lfs-2_13 # need to override
     jdk8
     ninja
-    # ncdu # borked in nixpkgs 25.05
     tree
     vim
   ];
