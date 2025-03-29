@@ -6,9 +6,9 @@
 
   home.packages = with pkgs; [
     ripgrep
-    btop
+    # btop
     cmake
-    direnv # May collide
+    # direnv # May collide
     fzf
     # git-lfs-2_13 # need to override
     jdk8
@@ -59,7 +59,17 @@
         # See - https://bugs.archlinux.org/task/78828
         unset NIX_PATH
       '';
-    };
+    }; # End bash config
+
+    btop = {
+      enable = true;
+    }; # End btop config
+
+    direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      nix-direnv.enable = true;
+    }; # End direnv config
 
     starship = {
       enable = true;
@@ -81,12 +91,26 @@
     fzf = {
       enable = true;
       enableBashIntegration = true;
+      # TODO (@waflores - 2025-03-28): add tmux support
     };
 
     # Add home-manager to the shell
     home-manager = {
       enable = true;
     };
+
+    # Add jq and jqp
+    jqp.enable = true;
+    # TODO (@waflores - 2025-03-28): add keychain support
+    # TODO (@waflores - 2025-03-28): add password-store support
+    # TODO (@waflores - 2025-03-28): add ssh support
+    nix-index.enable = true;
+    pay-respects = {
+      enable = true;
+      enableBashIntegration = true;
+    };
+    ripgrep-all.enable = true;
+    ripgrep.enable = true;
 
   }; # End programs
 }
