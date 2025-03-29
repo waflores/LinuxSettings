@@ -9,6 +9,7 @@
     # git-lfs-2_13 # need to override
     jdk8
     ninja
+    nix-inspect
     tree
   ];
 
