@@ -24,10 +24,6 @@ pkgs.mkShell {
     vim
     # keep-sorted end
   ];
-
-  shellHook = ''
-    echo "shell defined in our blueprint!"
-  '';
 }
 
 # https://github.com/numtide/blueprint/blob/main/docs/content/guides/configuring_direnv.md
