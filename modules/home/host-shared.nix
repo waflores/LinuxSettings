@@ -90,7 +90,21 @@
         command_timeout = 10000;
       };
     };
-    vim.enable = true;
+    vim = {
+      enable = true;
+      extraConfig = ''
+        set showcmd
+        set smartindent
+        set tabstop=4
+        set shiftwidth=4
+        set expandtab
+        set bg=dark
+        set ruler
+        set backspace=indent,eol,start
+        set hlsearch
+        syntax on
+      '';
+    };
     # keep-sorted end
   }; # End programs
 }
