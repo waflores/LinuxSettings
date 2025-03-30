@@ -12,6 +12,8 @@
     # system.stateVersion is set in:  hosts/*/configuration.nix
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "https://github.com/nix-community/home-manager/archive/693840c01b9bef9e54100239cef937e53d4661bf.tar.gz"; # 25.05 - 2025-03-26
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nix-index-database.url = "https://github.com/Mic92/nix-index-database/archive/b3696bfb6c24aa61428839a99e8b40c53ac3a82d.tar.gz";
     # Framework to remotely deploy new configurations
     nixos-anywhere.inputs.nixpkgs.follows = "nixpkgs";
     nixos-anywhere.url = "https://github.com/nix-community/nixos-anywhere/archive/d48c8a01968afc8870b5afcba43b7739c943f7f8.tar.gz";

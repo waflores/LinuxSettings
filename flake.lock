@@ -78,6 +78,23 @@
         "url": "https://github.com/nix-community/home-manager/archive/693840c01b9bef9e54100239cef937e53d4661bf.tar.gz"
       }
     },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1743306489,
+        "narHash": "sha256-LROaIjSLo347cwcHRfSpqzEOa2FoLSeJwU4dOrGm55E=",
+        "type": "tarball",
+        "url": "https://github.com/Mic92/nix-index-database/archive/b3696bfb6c24aa61428839a99e8b40c53ac3a82d.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/Mic92/nix-index-database/archive/b3696bfb6c24aa61428839a99e8b40c53ac3a82d.tar.gz"
+      }
+    },
     "nixos-anywhere": {
       "inputs": {
         "disko": "disko",
@@ -181,6 +198,7 @@
       "inputs": {
         "blueprint": "blueprint",
         "home-manager": "home-manager",
+        "nix-index-database": "nix-index-database",
         "nixos-anywhere": "nixos-anywhere",
         "nixpkgs": "nixpkgs",
         "nixpkgs-git-lfs": "nixpkgs-git-lfs",

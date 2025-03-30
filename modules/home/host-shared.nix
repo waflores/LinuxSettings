@@ -1,15 +1,16 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
+  imports = [ inputs.nix-index-database.hmModules.nix-index ];
+  # also wrap and install comma
+  programs.nix-index-database.comma.enable = true;
+
   # only available on linux, disabled on macos
   services.ssh-agent.enable = true;
 
   home.packages = with pkgs; [
     # keep-sorted start
-    cmake
     # git-lfs-2_13 # need to override
-    jdk8
-    ninja
-    nix-inspect
+    # nix-inspect
     tree
     #keep-sorted end
   ];
@@ -76,7 +77,10 @@
     # TODO (@waflores - 2025-03-28): add keychain support
     # TODO (@waflores - 2025-03-28): add password-store support
     # TODO (@waflores - 2025-03-28): add ssh support
-    nix-index.enable = true;
+    nix-index = {
+      enable = true;
+      enableBashIntegration = true;
+    };
     pay-respects = {
       enable = true;
       enableBashIntegration = true;
