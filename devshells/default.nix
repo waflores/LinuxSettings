@@ -6,22 +6,23 @@
 pkgs.mkShell {
   name = "willsBluePrint";
   packages = with pkgs; [
+    # keep-sorted start
     bashInteractive
     btop
     cachix
     cmake
     direnv
     fzf
-    # home-manager  # llvm_18 is borked for some reason...
     jdk8
     ninja
     nix-output-monitor
     nix-tree
     # ncdu  # borked in nixpkgs 25.05
     ripgrep
-    tree
     ruff
+    tree
     vim
+    # keep-sorted end
   ];
 
   shellHook = ''

@@ -4,25 +4,27 @@
   services.ssh-agent.enable = true;
 
   home.packages = with pkgs; [
+    # keep-sorted start
     cmake
     # git-lfs-2_13 # need to override
     jdk8
     ninja
     nix-inspect
     tree
+    #keep-sorted end
   ];
 
   home.stateVersion = "24.11"; # initial home-manager state
 
   programs = {
-
+    # keep-sorted start block=yes
     bash = {
       enable = true;
       enableCompletion = true;
 
       shellAliases = {
-        use-direnv = ''unset LD_LIBRARY_PATH && eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rsa && eval "$(direnv hook bash)" && direnv allow'';
         reload-home-manager-config = "${pkgs.lib.getExe pkgs.home-manager} switch --flake . -b 'bak' && exec bash";
+        use-direnv = ''unset LD_LIBRARY_PATH && eval "$(ssh-agent)" && ssh-add ~/.ssh/id_rsa && eval "$(direnv hook bash)" && direnv allow'';
       };
 
       # We took our original ~/.profile and renamed it to ~/.oldprofile
@@ -48,32 +50,12 @@
         unset NIX_PATH
       '';
     }; # End bash config
-
-    btop = {
-      enable = true;
-    }; # End btop config
-
+    btop.enable = true;
     direnv = {
       enable = true;
       enableBashIntegration = true;
       nix-direnv.enable = true;
     }; # End direnv config
-
-    starship = {
-      enable = true;
-      settings = {
-        # We need 1 second to allow git to run on the monorepo
-        command_timeout = 5000;
-      };
-    };
-
-    # Add navi to the shell
-    # https://github.com/denisidoro/navi
-    navi = {
-      enable = true;
-      enableBashIntegration = true;
-    };
-
     # Add fzf to the shell
     # https://github.com/junegunn/fzf
     fzf = {
@@ -81,14 +63,16 @@
       enableBashIntegration = true;
       # TODO (@waflores - 2025-03-28): add tmux support
     };
-
     # Add home-manager to the shell
-    home-manager = {
-      enable = true;
-    };
-
+    home-manager.enable = true;
     # Add jq and jqp
     jqp.enable = true;
+    # Add navi to the shell
+    # https://github.com/denisidoro/navi
+    navi = {
+      enable = true;
+      enableBashIntegration = true;
+    };
     # TODO (@waflores - 2025-03-28): add keychain support
     # TODO (@waflores - 2025-03-28): add password-store support
     # TODO (@waflores - 2025-03-28): add ssh support
@@ -99,7 +83,14 @@
     };
     ripgrep-all.enable = true;
     ripgrep.enable = true;
+    starship = {
+      enable = true;
+      settings = {
+        # We need 1 second to allow git to run on the monorepo
+        command_timeout = 10000;
+      };
+    };
     vim.enable = true;
-
+    # keep-sorted end
   }; # End programs
 }
