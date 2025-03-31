@@ -1,7 +1,10 @@
-_: {
-  # environment.systemPackages = [
-  #   pkgs.btop
-  # ];
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [
+    btop
+    vim
+    tree
+  ];
 
   home-manager = {
     backupFileExtension = "bak";
