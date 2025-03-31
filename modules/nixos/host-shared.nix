@@ -5,6 +5,7 @@
     btop
     dmidecode
     nix-output-monitor
+    screen
     tree
     vim
     # keep-sorted end

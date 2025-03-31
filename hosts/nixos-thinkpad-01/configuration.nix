@@ -4,7 +4,10 @@
   ...
 }:
 {
-  imports = [ inputs.self.nixosModules.host-shared ];
+  imports = [
+    inputs.self.nixosModules.host-shared
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
