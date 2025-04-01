@@ -24,7 +24,7 @@
       "flakes"
       "ca-derivations"
       "fetch-tree"
-      "repl-flake"
+      # "repl-flake"
     ];
   };
 
@@ -92,8 +92,10 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "tss"
     ];
   };
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
