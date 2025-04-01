@@ -3,8 +3,8 @@
   environment.systemPackages = with pkgs; [
     # keep-sorted start
     btop
-    git
     dmidecode
+    git
     nix-output-monitor
     screen
     tree
