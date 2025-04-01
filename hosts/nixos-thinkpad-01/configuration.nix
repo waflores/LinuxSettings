@@ -20,7 +20,7 @@
 
   nix = {
     enable = true;
-    settings.trusted-users = ["root" "@wheel"];
+    settings.trusted-users = ["@wheel"];
     settings.extra-experimental-features = [
       "nix-command"
       "flakes"
