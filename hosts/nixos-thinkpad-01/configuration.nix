@@ -19,6 +19,8 @@
   networking.networkmanager.enable = true;
 
   nix = {
+    enable = true;
+    settings.trusted-users = ["root" "@wheel"];
     settings.extra-experimental-features = [
       "nix-command"
       "flakes"
