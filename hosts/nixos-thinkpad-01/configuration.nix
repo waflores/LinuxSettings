@@ -91,6 +91,7 @@
   users.users.will = {
     isNormalUser = true;
     description = "Will Flores";
+    hashedPassword = "$6$a69Ua5IWrM6vFPtk$olkZzNeti8MosldO2.ijOSEcH713NHVeBBFk5lVoXjRj8xdu9QwLT1VFaXoU4L71JsbuMIAtcsG1PHHbD1DUb1";
     extraGroups = [
       "networkmanager"
       "wheel"
