@@ -1,11 +1,13 @@
 {
-  pkgs,
   inputs,
+  pkgs,
+  flake,
   ...
 }:
 {
   imports = [
-    inputs.self.nixosModules.host-shared
+    inputs.srvos.nixosModules.desktop
+    flake.nixosModules.host-shared
     ./hardware-configuration.nix
   ];
 
@@ -20,7 +22,7 @@
 
   nix = {
     enable = true;
-    settings.trusted-users = ["@wheel"];
+    settings.trusted-users = [ "@wheel" ];
     settings.extra-experimental-features = [
       "nix-command"
       "flakes"

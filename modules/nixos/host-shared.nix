@@ -16,7 +16,7 @@
     backupFileExtension = "bak";
     verbose = true;
   };
-  
+
   services.avahi.enable = true;
   security.tpm2.enable = true;
   security.tpm2.pkcs11.enable = true; # expose /run/current-system/sw/lib/libtpm2_pkcs11.so

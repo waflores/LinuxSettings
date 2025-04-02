@@ -203,7 +203,25 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-git-lfs": "nixpkgs-git-lfs",
         "nixpkgs-llvm_18": "nixpkgs-llvm_18",
+        "srvos": "srvos",
         "treefmt-nix": "treefmt-nix_2"
+      }
+    },
+    "srvos": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1743041209,
+        "narHash": "sha256-ANo3g355dNIF0Rtv3eLrJPu1h58Pn6O6mK0oBrcBq8A=",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/srvos/archive/7a4dc5c1112b2cde72ab05f70f522cfecb9c48d1.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/nix-community/srvos/archive/7a4dc5c1112b2cde72ab05f70f522cfecb9c48d1.tar.gz"
       }
     },
     "systems": {
