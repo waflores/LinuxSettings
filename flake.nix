@@ -36,6 +36,7 @@
     # Framework to remotely deploy new configurations
     nixos-anywhere.inputs.nixpkgs.follows = "nixpkgs";
     nixos-anywhere.url = "https://github.com/nix-community/nixos-anywhere/archive/d48c8a01968afc8870b5afcba43b7739c943f7f8.tar.gz";
+    nixos-hardware.url = "https://github.com/NixOS/nixos-hardware/archive/de6fc5551121c59c01e2a3d45b277a6d05077bc4.tar.gz";
     nixpkgs-git-lfs.url = "https://github.com/NixOS/nixpkgs/archive/83667ff60a88e22b76ef4b0bdf5334670b39c2b6.tar.gz"; # git-lfs 2.13
     nixpkgs-llvm_18.url = "https://github.com/NixOS/nixpkgs/archive/b5befb85475250e7849341cc2d10233415c2a528.tar.gz";
     nixpkgs.url = "https://github.com/NixOS/nixpkgs/archive/b107b36e150478e05bd06d50bcc4f2218df0257f.tar.gz"; # 25.05 - 2025-03-26
@@ -43,6 +44,7 @@
     srvos.url = "https://github.com/nix-community/srvos/archive/7a4dc5c1112b2cde72ab05f70f522cfecb9c48d1.tar.gz";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.url = "https://github.com/numtide/treefmt-nix/archive/adc195eef5da3606891cedf80c0d9ce2d3190808.tar.gz";
+
     # keep-sorted end
   }; # End inputs
 

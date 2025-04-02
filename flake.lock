@@ -117,6 +117,18 @@
         "url": "https://github.com/nix-community/nixos-anywhere/archive/d48c8a01968afc8870b5afcba43b7739c943f7f8.tar.gz"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1743420942,
+        "narHash": "sha256-b/exDDQSLmENZZgbAEI3qi9yHkuXAXCPbormD8CSJXo=",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixos-hardware/archive/de6fc5551121c59c01e2a3d45b277a6d05077bc4.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixos-hardware/archive/de6fc5551121c59c01e2a3d45b277a6d05077bc4.tar.gz"
+      }
+    },
     "nixos-images": {
       "inputs": {
         "nixos-stable": [
@@ -200,6 +212,7 @@
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",
         "nixos-anywhere": "nixos-anywhere",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-git-lfs": "nixpkgs-git-lfs",
         "nixpkgs-llvm_18": "nixpkgs-llvm_18",

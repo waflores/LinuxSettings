@@ -7,6 +7,7 @@
 {
   imports = [
     inputs.srvos.nixosModules.desktop
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t420
     flake.nixosModules.host-shared
     ./hardware-configuration.nix
   ];
