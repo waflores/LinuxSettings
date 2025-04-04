@@ -52,7 +52,8 @@
     inputs:
     inputs.blueprint {
       inherit inputs;
-      nixpkgs.config.allowUnfree = true;
+      nixpkgs.config.allowUnfreePredicate =
+        pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) [ "vscode" ];
       systems = [ "x86_64-linux" ];
     };
 }
