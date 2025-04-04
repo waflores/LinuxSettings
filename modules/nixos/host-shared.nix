@@ -8,6 +8,7 @@
     dmidecode
     git
     nix-output-monitor
+    pciutils # provides lspci and setpci
     screen
     tree
     vim
