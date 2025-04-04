@@ -2,3 +2,4 @@ result
 result-bin
 /.vscode/
 /.direnv/
+*.qcow2
