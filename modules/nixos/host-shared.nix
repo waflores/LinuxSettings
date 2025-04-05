@@ -10,6 +10,7 @@
     ncdu
     netsniff-ng # all sorts of networking introspection
     nix-output-monitor
+    nssmdns
     pciutils # provides lspci and setpci
     screen
     tree
