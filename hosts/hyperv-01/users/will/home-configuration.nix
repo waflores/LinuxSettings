@@ -1,4 +1,4 @@
-{ flake, perSystem, ... }:
+{ flake, ... }:
 {
 
   imports = [ flake.homeModules.host-shared ];
@@ -8,7 +8,5 @@
     userEmail = "waflores956+hyperv-01@gmail.com";
     lfs.enable = true;
   };
-
-  flake.packages = flake.packages ++ [ perSystem.nixpkgs-git-lfs.git-lfs ];
 
 }

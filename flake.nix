@@ -51,8 +51,11 @@
     inputs:
     inputs.blueprint {
       inherit inputs;
+      systems = [ "x86_64-linux" ];
       nixpkgs.config.allowUnfreePredicate =
         pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) [ "vscode" ];
-      systems = [ "x86_64-linux" ];
+      nixpkgs.overlays = [
+        (_final: _prev: { git-lfs-2_13 = inputs.nixpkgs-git-lfs.git-lfs; })
+      ];
     };
 }

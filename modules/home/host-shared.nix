@@ -9,7 +9,7 @@
 
   home.packages = with pkgs; [
     # keep-sorted start
-    # git-lfs-2_13 # need to override
+    git-lfs-2_13 
     # nix-inspect
     tree
     #keep-sorted end
