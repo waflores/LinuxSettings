@@ -10,7 +10,6 @@
     ncdu
     netsniff-ng # all sorts of networking introspection
     nix-output-monitor
-    nssmdns
     pciutils # provides lspci and setpci
     screen
     tree
@@ -24,7 +23,15 @@
     verbose = true;
   };
 
-  services.avahi.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    publish = {
+      enable = true;
+      addresses = true;
+    };
+  };
+
   security.tpm2.enable = true;
   security.tpm2.pkcs11.enable = true; # expose /run/current-system/sw/lib/libtpm2_pkcs11.so
   security.tpm2.tctiEnvironment.enable = true; # TPM2TOOLS_TCTI and TPM2_PKCS11_TCTI env variables
