@@ -6,7 +6,7 @@
 {
   imports = [
     inputs.srvos.nixosModules.server
-    inputs.srvos.nixosModules.mixins.tracing
+    inputs.srvos.nixosModules.mixins-tracing
     inputs.self.nixosModules.host-shared
   ];
 
