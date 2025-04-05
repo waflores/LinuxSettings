@@ -44,7 +44,6 @@
     srvos.url = "https://github.com/nix-community/srvos/archive/7a4dc5c1112b2cde72ab05f70f522cfecb9c48d1.tar.gz";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.url = "https://github.com/numtide/treefmt-nix/archive/adc195eef5da3606891cedf80c0d9ce2d3190808.tar.gz";
-
     # keep-sorted end
   }; # End inputs
 

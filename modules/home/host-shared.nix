@@ -66,6 +66,7 @@
     };
     git = {
       enable = true;
+      userName = "Will Flores";
     };
     # Add home-manager to the shell
     home-manager.enable = true;
