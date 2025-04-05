@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  perSystem,
   ...
 }:
 {
@@ -29,7 +28,4 @@
       "tss"
     ];
   };
-
-  programs.git.lfs.package = perSystem.nixpkgs-git-lfs.git-lfs;
-
 }
