@@ -7,6 +7,7 @@
     btop
     dmidecode
     git
+    ncdu
     netsniff-ng # all sorts of networking introspection
     nix-output-monitor
     pciutils # provides lspci and setpci
