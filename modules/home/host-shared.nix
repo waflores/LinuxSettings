@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  perSystem,
+  ...
+}:
 {
   imports = [ inputs.nix-index-database.hmModules.nix-index ];
   # also wrap and install comma
@@ -7,11 +12,10 @@
   # only available on linux, disabled on macos
   services.ssh-agent.enable = true;
 
-  home.packages = with pkgs; [
+  home.packages = [
     # keep-sorted start
-    git-lfs-2_13 
-    # nix-inspect
-    tree
+    perSystem.nixpkgs-git-lfs.git-lfs # git-lfs-2_13
+    pkgs.tree
     #keep-sorted end
   ];
 
