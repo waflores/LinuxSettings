@@ -14,7 +14,6 @@
 
   home.packages = [
     # keep-sorted start
-    perSystem.nixpkgs-git-lfs.git-lfs # git-lfs-2_13
     pkgs.tree
     #keep-sorted end
   ];
