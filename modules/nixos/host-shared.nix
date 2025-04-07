@@ -18,8 +18,9 @@
     # keep-sorted end
   ];
   # NOTE (@waflores - 2025-04-05): we can make the package point to the old git-lfs
-  programs.git.lfs.package = perSystem.nixpkgs-git-lfs.git-lfs;
-  programs.git.lfs.enable = true;
+  #   However, we're not able to make the home version have this picked up.
+  # programs.git.lfs.package = perSystem.nixpkgs-git-lfs.git-lfs;
+  # programs.git.lfs.enable = true;
 
   home-manager = {
     backupFileExtension = "bak";
