@@ -10,6 +10,7 @@
     inputs.srvos.nixosModules.mixins-terminfo
     inputs.self.nixosModules.host-shared
     inputs.disko.nixosModules.disko
+    ./disko-config.nix
   ];
 
   # for testing purposes only, remove on bootable hosts.
@@ -30,4 +31,6 @@
       "tss"
     ];
   };
+
+  disko.devices.disk.main.device = "/dev/sda";
 }
