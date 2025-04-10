@@ -17,6 +17,7 @@ pkgs.mkShell {
     ninja
     nix-output-monitor
     nix-tree
+    nixos-anywhere
     # ncdu  # borked in nixpkgs 25.05
     ripgrep
     ruff
