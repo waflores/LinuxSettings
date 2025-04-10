@@ -21,6 +21,23 @@
     "disko": {
       "inputs": {
         "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1744145203,
+        "narHash": "sha256-I2oILRiJ6G+BOSjY+0dGrTPe080L3pbKpc+gCV3Nmyk=",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/disko/archive/76c0a6dba345490508f36c1aa3c7ba5b6b460989.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/nix-community/disko/archive/76c0a6dba345490508f36c1aa3c7ba5b6b460989.tar.gz"
+      }
+    },
+    "disko_2": {
+      "inputs": {
+        "nixpkgs": [
           "nixos-anywhere",
           "nixpkgs"
         ]
@@ -97,7 +114,7 @@
     },
     "nixos-anywhere": {
       "inputs": {
-        "disko": "disko",
+        "disko": "disko_2",
         "flake-parts": "flake-parts",
         "nixos-images": "nixos-images",
         "nixos-stable": "nixos-stable",
@@ -209,6 +226,7 @@
     "root": {
       "inputs": {
         "blueprint": "blueprint",
+        "disko": "disko",
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",
         "nixos-anywhere": "nixos-anywhere",

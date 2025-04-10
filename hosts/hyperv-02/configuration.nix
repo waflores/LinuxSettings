@@ -9,12 +9,13 @@
     inputs.srvos.nixosModules.mixins-tracing
     inputs.srvos.nixosModules.mixins-terminfo
     inputs.self.nixosModules.host-shared
+    inputs.disko.nixosModules.disko
   ];
 
   # for testing purposes only, remove on bootable hosts.
   boot.loader.grub.enable = pkgs.lib.mkDefault false;
   fileSystems."/".device = pkgs.lib.mkDefault "/dev/null";
-  networking.hostName = "nixos-hyperv-02";
+  networking.hostName = "hyperv-02";
   nixpkgs.hostPlatform.system = "x86_64-linux";
   system.stateVersion = pkgs.lib.versions.majorMinor pkgs.lib.version; # initial nixos state
 

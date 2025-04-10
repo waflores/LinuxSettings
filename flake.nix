@@ -26,6 +26,9 @@
     # keep-sorted start
     blueprint.inputs.nixpkgs.follows = "nixpkgs";
     blueprint.url = "https://github.com/numtide/blueprint/archive/7ae8756a68c662d551e354beb537f365b80e5108.tar.gz";
+    # disko provides installTest for nixosConfiguration
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko.url = "https://github.com/nix-community/disko/archive/76c0a6dba345490508f36c1aa3c7ba5b6b460989.tar.gz"; # 2025-04-09
     # NOTE (@waflores - 2025-03-29): key configuration version data as follows:
     # home.stateVersion is set in: modules/home/host-shared.nix
     # system.stateVersion is set in:  hosts/*/configuration.nix
