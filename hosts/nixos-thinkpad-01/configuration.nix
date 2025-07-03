@@ -81,6 +81,7 @@
       "networkmanager"
       "wheel"
       "tss"
+      "docker"
     ];
   };
 
@@ -94,6 +95,9 @@
 
   # List services that you want to enable:
 
+  # Enable OctoPrint
+  services.octoprint.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
@@ -102,5 +106,12 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
+  services.logind.lidSwitchExternalPower = "ignore";
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
+  virtualisation.docker.enable = true;
 }

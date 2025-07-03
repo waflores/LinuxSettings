@@ -13,6 +13,7 @@
     pciutils # provides lspci and setpci
     screen
     tree
+    usbutils
     vim
     vscode
     # keep-sorted end
