@@ -15,6 +15,7 @@ pkgs.mkShell {
     fzf
     jdk8
     ninja
+    nix-fast-build
     nix-output-monitor
     nix-tree
     nixos-anywhere
