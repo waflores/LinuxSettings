@@ -1,4 +1,8 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs ? import <nixpkgs> { },
+  inputs,
+  ...
+}:
 inputs.treefmt-nix.lib.mkWrapper pkgs {
   # Used to find the project root
   projectRootFile = ".git/config";

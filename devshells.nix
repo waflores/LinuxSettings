@@ -1,6 +1,6 @@
 # Using mkShell from nixpkgs
 {
-  pkgs,
+  pkgs ? import <nixpkgs> { },
   ...
 }:
 pkgs.mkShell {
