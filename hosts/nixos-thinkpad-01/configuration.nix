@@ -107,11 +107,11 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
   services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
-  systemd.sleep.settings.Sleep = ''
-    AllowSuspend=no
-    AllowHibernation=no
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-  '';
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "no";
+    AllowHibernation = "no";
+    AllowHybridSleep = "no";
+    AllowSuspendThenHibernate = "no";
+  };
   virtualisation.docker.enable = true;
 }
