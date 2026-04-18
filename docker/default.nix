@@ -1,4 +1,4 @@
-# home-manager-tetser.nix - environment to test out our changes to our dotfiles
+# home-manager-tester.nix - environment to test out our changes to our dotfiles
 {
   pkgs ? import <nixpkgs> {
     config = { };
@@ -19,7 +19,7 @@ let
 
   shell = "${bashInteractive}/bin/bash";
 
-  staticPath = ''${dirOf shell}:${lib.makeBinPath [ coreutils ]}'';
+  staticPath = "${dirOf shell}:${lib.makeBinPath [ coreutils ]}";
 
   # https://github.com/NixOS/nix/blob/2.8.0/src/libstore/globals.hh#L464-L465
   sandboxBuildDir = "/build";
