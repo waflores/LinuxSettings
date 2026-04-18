@@ -2,32 +2,13 @@
   description = "Will's Development System Configurations";
 
   nixConfig.bash-prompt-suffix = "devshell-env> ";
-  # nixConfig.extra-trusted-substituters = [
-  #   "https://cache.garnix.io"
-  #   "https://ai.cachix.org"
-  #   "https://nixpkgs-wayland.cachix.org"
-  #   "https://yash-garg.cachix.org"
-  #   "https://cache.nixos.org"
-  #   "https://raspberry-pi-nix.cachix.org"
-  #   "https://cosmic.cachix.org/"
-  # ];
-
-  # nixConfig.extra-trusted-public-keys = [
-  #   "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
-  #   "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
-  #   "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-  #   "yash-garg.cachix.org-1:sHcKOvVej+RlINvt4XVAOE/Cnho3hnrHHRv0uq1u7Xs="
-  #   "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-  #   "raspberry-pi-nix.cachix.org-1:WmV2rdSangxW0rZjY/tBvBDSaNFQ3DyEQsVw8EvHn9o="
-  #   "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-  # ];
-
   inputs = {
     # keep-sorted start
 
     blueprint.inputs.nixpkgs.follows = "nixpkgs";
     blueprint.url = "https://github.com/numtide/blueprint/archive/56131e8628f173d24a27f6d27c0215eff57e40dd.tar.gz";
-    devshell.url = "github:numtide/devshell";
+    devshell.inputs.nixpkgs.follows = "nixpkgs";
+    devshell.url = "https://github.com/numtide/devshell/archive/255a2b1725a20d060f566e4755dbf571bbbb5f76.tar.gz";
     # disko provides installTest for nixosConfiguration
     disko.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "https://github.com/nix-community/disko/archive/5ad85c82cc52264f4beddc934ba57f3789f28347.tar.gz"; # 2026-04-17

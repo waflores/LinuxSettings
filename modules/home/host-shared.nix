@@ -17,7 +17,7 @@
     #keep-sorted end
   ];
 
-  home.stateVersion = "24.11"; # initial home-manager state
+  home.stateVersion = "26.05"; # initial home-manager state
 
   programs = {
     # keep-sorted start block=yes

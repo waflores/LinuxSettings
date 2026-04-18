@@ -15,7 +15,7 @@ inputs.treefmt-nix.lib.mkWrapper pkgs {
     # mdformat.enable = true;
     mdsh.enable = true;
     nixfmt.enable = true;
-    nixfmt.package = pkgs.nixfmt-rfc-style;
+    nixfmt.package = pkgs.nixfmt;
     ruff.check = true;
     ruff.format = true;
     shellcheck.enable = true;
