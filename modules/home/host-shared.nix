@@ -4,7 +4,7 @@
   ...
 }:
 {
-  imports = [ inputs.nix-index-database.hmModules.nix-index ];
+  imports = [ inputs.nix-index-database.homeModules.nix-index ];
   # also wrap and install comma
   programs.nix-index-database.comma.enable = true;
 
@@ -68,7 +68,7 @@
     };
     git = {
       enable = true;
-      userName = "Will Flores";
+      settings.user.name = "Will Flores";
     };
     # Add home-manager to the shell
     home-manager.enable = true;
