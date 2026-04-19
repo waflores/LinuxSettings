@@ -6,6 +6,7 @@
 {
   imports = [
     inputs.srvos.nixosModules.server
+    inputs.srvos.nixosModules.mixins-systemd-boot
     inputs.srvos.nixosModules.mixins-tracing
     inputs.srvos.nixosModules.mixins-terminfo
     inputs.self.nixosModules.host-shared
@@ -13,6 +14,14 @@
 
   # for testing purposes only, remove on bootable hosts.
   boot.loader.grub.enable = pkgs.lib.mkDefault false;
+
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
+  boot.consoleLogLevel = 7;
+
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_0;
   fileSystems."/".device = pkgs.lib.mkDefault "/dev/null";
   fileSystems."/".fsType = pkgs.lib.mkDefault "none";
   networking.hostName = "hyperv-01";
