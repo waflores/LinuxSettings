@@ -9,6 +9,7 @@ Personalizations include:
 - git settings
 
 ## Testing NixOS Configs
+
 We can try things out by running the config in a VM like so:
 
 ```bash
@@ -20,6 +21,7 @@ nom build .#nixosConfigurations.<hostname>.config.system.build.vm
 ```
 
 If you want to mount a folder from the host to the VM, we can do this:
+
 ```bash
 ./result/bin/run-hyperv-01-vm -virtfs local,path=$PWD,security_model=none,mount_tag=host0
 

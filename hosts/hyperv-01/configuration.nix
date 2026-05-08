@@ -39,4 +39,14 @@
       "tss"
     ];
   };
+
+  # TODO: we need to have a look at how this works
+  # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/virtualisation/qemu-vm.nix
+  # https://nix.dev/tutorials/nixos/nixos-configuration-on-vm
+
+  # Graphical User Interfaces!
+  services.xserver.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+
 }
