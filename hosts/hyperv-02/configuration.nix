@@ -6,25 +6,18 @@
 {
   imports = [
     inputs.srvos.nixosModules.server
-    inputs.srvos.nixosModules.mixins-systemd-boot
     inputs.srvos.nixosModules.mixins-tracing
     inputs.srvos.nixosModules.mixins-terminfo
     inputs.self.nixosModules.host-shared
+    inputs.disko.nixosModules.disko
+    ./disko-config.nix
   ];
 
   # for testing purposes only, remove on bootable hosts.
   boot.loader.grub.enable = pkgs.lib.mkDefault false;
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
-  boot.consoleLogLevel = 7;
-
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_0;
   fileSystems."/".device = pkgs.lib.mkDefault "/dev/null";
   fileSystems."/".fsType = pkgs.lib.mkDefault "none";
-  networking.hostName = "hyperv-01";
+  networking.hostName = "hyperv-02";
   nixpkgs.hostPlatform.system = "x86_64-linux";
   system.stateVersion = pkgs.lib.versions.majorMinor pkgs.lib.version; # initial nixos state
 
@@ -40,13 +33,5 @@
     ];
   };
 
-  # TODO: we need to have a look at how this works
-  # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/virtualisation/qemu-vm.nix
-  # https://nix.dev/tutorials/nixos/nixos-configuration-on-vm
-
-  # Graphical User Interfaces!
-  services.xserver.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-
+  disko.devices.disk.main.device = "/dev/sda";
 }

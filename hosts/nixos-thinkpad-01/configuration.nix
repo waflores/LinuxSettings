@@ -1,11 +1,14 @@
 {
-  pkgs,
   inputs,
+  pkgs,
+  flake,
   ...
 }:
 {
   imports = [
-    inputs.self.nixosModules.host-shared
+    inputs.srvos.nixosModules.desktop
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t420
+    flake.nixosModules.host-shared
     ./hardware-configuration.nix
   ];
 
@@ -20,7 +23,7 @@
 
   nix = {
     enable = true;
-    settings.trusted-users = ["@wheel"];
+    settings.trusted-users = [ "@wheel" ];
     settings.extra-experimental-features = [
       "nix-command"
       "flakes"
@@ -36,8 +39,8 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -69,24 +72,6 @@
 
   system.stateVersion = pkgs.lib.versions.majorMinor pkgs.lib.version; # initial nixos state
 
-  # Set our timezone
-  time.timeZone = "America/New_York";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
   # on nixos this either isNormalUser or isSystemUser is required to create the user.
   users.users.will = {
     isNormalUser = true;
@@ -96,6 +81,7 @@
       "networkmanager"
       "wheel"
       "tss"
+      "docker"
     ];
   };
 
@@ -109,6 +95,9 @@
 
   # List services that you want to enable:
 
+  # Enable OctoPrint
+  services.octoprint.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
@@ -117,5 +106,12 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
-
+  services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "no";
+    AllowHibernation = "no";
+    AllowHybridSleep = "no";
+    AllowSuspendThenHibernate = "no";
+  };
+  virtualisation.docker.enable = true;
 }

@@ -1,15 +1,15 @@
 let
   nixpkgs = builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixpkgs/archive/release-24.11.tar.gz";
-    sha256 = "1fhvpxccnd8zgamk90k09smp7bwal73l6w8z6qp7q1rxg854i8yi";
+    url = "https://github.com/NixOS/nixpkgs/archive/7f817b8455a1e9a944ab4392cc16c3ca36dbc83e.tar.gz";
+    sha256 = "00ydd0jhx02bbi4q2hcjibqzyv9skyni28zxd5pznwc8ajpgs8i2";
   };
   pkgs = import nixpkgs { };
   home-manager = builtins.fetchTarball {
-    url = "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
-    sha256 = "13mmmf5apnd6ima3a1zzybax5nyxfw0kaljk8znyrr7zqz7gllnc";
+    url = "https://github.com/nix-community/home-manager/archive/565e5349208fe7d0831ef959103c9bafbeac0681.tar.gz";
+    sha256 = "168q6bqi3g7r51hhxb3f4bz1kkj3660dv0dm1zjyilqldcar8d7g";
   };
 in
-pkgs.nixosTest {
+pkgs.testers.nixosTest {
   name = "test1";
   nodes.machine =
     { pkgs, ... }:
@@ -22,8 +22,8 @@ pkgs.nixosTest {
       boot.loader.efi.canTouchEfiVariables = true;
 
       services.xserver.enable = true;
-      services.xserver.displayManager.gdm.enable = true;
-      services.xserver.desktopManager.gnome.enable = true;
+      services.displayManager.gdm.enable = true;
+      services.desktopManager.gnome.enable = true;
 
       users.users.alice = {
         isNormalUser = true;
@@ -35,10 +35,10 @@ pkgs.nixosTest {
           pkgs.firefox
           pkgs.thunderbird
         ];
-        home.stateVersion = "24.11";
+        home.stateVersion = "26.05";
       };
 
-      system.stateVersion = "24.11";
+      system.stateVersion = "26.05";
     };
   testScript = ''
     machine.start(allow_reboot = True)

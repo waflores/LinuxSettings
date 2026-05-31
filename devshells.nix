@@ -1,6 +1,6 @@
 # Using mkShell from nixpkgs
 {
-  pkgs,
+  pkgs ? import <nixpkgs> { },
   ...
 }:
 pkgs.mkShell {
@@ -15,8 +15,10 @@ pkgs.mkShell {
     fzf
     jdk8
     ninja
+    nix-fast-build
     nix-output-monitor
     nix-tree
+    nixos-anywhere
     # ncdu  # borked in nixpkgs 25.05
     ripgrep
     ruff

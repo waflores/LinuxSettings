@@ -1,21 +1,23 @@
-{ pkgs, inputs, ... }:
 {
-  imports = [ inputs.nix-index-database.hmModules.nix-index ];
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  imports = [ inputs.nix-index-database.homeModules.nix-index ];
   # also wrap and install comma
   programs.nix-index-database.comma.enable = true;
 
   # only available on linux, disabled on macos
   services.ssh-agent.enable = true;
 
-  home.packages = with pkgs; [
+  home.packages = [
     # keep-sorted start
-    # git-lfs-2_13 # need to override
-    # nix-inspect
-    tree
+    pkgs.tree
     #keep-sorted end
   ];
 
-  home.stateVersion = "24.11"; # initial home-manager state
+  home.stateVersion = "26.05"; # initial home-manager state
 
   programs = {
     # keep-sorted start block=yes
@@ -66,6 +68,7 @@
     };
     git = {
       enable = true;
+      settings.user.name = "Will Flores";
     };
     # Add home-manager to the shell
     home-manager.enable = true;
