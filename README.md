@@ -4,6 +4,12 @@ Personalized NixOS and Home Manager configurations for Will Flores's Linux syste
 
 This project provides a modular, reproducible, and declarative approach to configuring Linux systems using Nix Flakes.
 
+## 📚 Documentation
+
+- **[AGENTS.md](AGENTS.md)** - Guide for AI agents working with this project
+- **[SKILLS.md](SKILLS.md)** - Skills and capabilities reference for agents
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Guide for extending the configuration system
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -46,6 +52,9 @@ LinuxSettings/
 ├── formatter.nix           # Code formatting configuration
 ├── LICENSE                 # License file
 ├── README.md               # This file
+├── AGENTS.md               # Guide for AI agents
+├── SKILLS.md               # Skills reference for agents
+├── CONTRIBUTING.md         # Guide for extending the system
 ├── docker/                 # Docker testing configurations
 │   ├── README.md
 │   ├── default.nix
@@ -78,8 +87,6 @@ LinuxSettings/
     └── nixos/
         └── host-shared.nix
 ```
-
-## Host Configurations
 
 ### nixos-thinkpad-01
 

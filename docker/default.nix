@@ -67,8 +67,7 @@ let
     NIX_STORE = builtins.storeDir;
 
     # https://github.com/NixOS/nix/blob/2.8.0/src/libstore/build/local-derivation-goal.cc#L1046-L1047
-    # TODO: Make configurable?
-    NIX_BUILD_CORES = "4";
+    NIX_BUILD_CORES = lib.mkDefault "4";
 
     # https://github.com/NixOS/nix/blob/2.8.0/src/libstore/build/local-derivation-goal.cc#L1008-L1010
     NIX_BUILD_TOP = sandboxBuildDir;

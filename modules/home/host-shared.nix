@@ -6,7 +6,7 @@
 {
   imports = [ inputs.nix-index-database.homeModules.nix-index ];
   # also wrap and install comma
-  programs.nix-index-database.comma.enable = true;
+  inputs.nix-index-database.homeModules.nix-index.comma.enable = true;
 
   # only available on linux, disabled on macos
   services.ssh-agent.enable = true;
@@ -64,25 +64,27 @@
     fzf = {
       enable = true;
       enableBashIntegration = true;
-      # TODO (@waflores - 2025-03-28): add tmux support
+      enableZshIntegration = true;
     };
     git = {
       enable = true;
       settings.user.name = "Will Flores";
     };
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
     # Add home-manager to the shell
     home-manager.enable = true;
     # Add jq and jqp
     jqp.enable = true;
+    keychain.enable = true;
     # Add navi to the shell
     # https://github.com/denisidoro/navi
     navi = {
       enable = true;
       enableBashIntegration = true;
     };
-    # TODO (@waflores - 2025-03-28): add keychain support
-    # TODO (@waflores - 2025-03-28): add password-store support
-    # TODO (@waflores - 2025-03-28): add ssh support
     nix-index = {
       enable = true;
       enableBashIntegration = true;
@@ -93,6 +95,8 @@
     };
     ripgrep-all.enable = true;
     ripgrep.enable = true;
+    # Add ssh support
+    services.openssh.enable = true;
     starship = {
       enable = true;
       settings = {

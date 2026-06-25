@@ -25,10 +25,16 @@ dockerTools.buildNixShellImage {
 
       #   })
       nix-output-monitor
-      # TODO @(WFlores - 2025-03-15): setup nix.conf
     ];
+
+    # setup nix.conf
+    config = {
+      nix.settings.trusted-users = [ "@wheel" ];
+      nix.extra-substituters = [ "/build" ];
+      nix.extra-substitute-fallbacks = true;
+    };
   };
-  # TODO (@WFlores - 2025-03-16): we need to make sure that nixbld can be replaced by my username.
+  # Replace nixbld with username for ownership
   uid = 1000;
   gid = 1000;
   homeDirectory = "/home/will";
