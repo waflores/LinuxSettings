@@ -1,6 +1,16 @@
+# Nix build outputs
 result
 result-bin
-/.vscode/
-/.direnv/
-*.qcow2
 result-*
+
+# VS Code
+/.vscode/
+
+# Direnv
+/.direnv/
+
+# Disk images
+*.qcow2
+
+# Git hooks (not committed to repo)
+.git/hooks/pre-commit

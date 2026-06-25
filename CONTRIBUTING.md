@@ -4,6 +4,7 @@ This document provides guidance for extending and modifying this NixOS/Home Mana
 
 ## Table of Contents
 
+- [Git Pre-Commit Hook](#git-pre-commit-hook)
 - [Adding New Packages](#adding-new-packages)
 - [Adding New Hosts](#adding-new-hosts)
 - [Modifying Shared Modules](#modifying-shared-modules)
