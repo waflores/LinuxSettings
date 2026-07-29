@@ -90,7 +90,6 @@
     ripgrep-all.enable = true;
     ripgrep.enable = true;
     # Add ssh support
-    ssh.enable = true;
     starship = {
       enable = true;
       settings = {

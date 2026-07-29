@@ -21,7 +21,7 @@
   boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
   boot.consoleLogLevel = 7;
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_0;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_1;
   fileSystems."/".device = pkgs.lib.mkDefault "/dev/null";
   fileSystems."/".fsType = pkgs.lib.mkDefault "none";
   networking.hostName = "hyperv-01";
