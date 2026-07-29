@@ -22,10 +22,11 @@
   # programs.git.lfs.package = perSystem.nixpkgs-git-lfs.git-lfs;
   # programs.git.lfs.enable = true;
 
-  home-manager = {
-    backupFileExtension = "bak";
-    verbose = true;
-  };
+  # TODO (@waflores - 2026-07-29): figure out why this stopped working.
+  # home-manager = {
+  #   backupFileExtension = "bak";
+  #   verbose = true;
+  # };
 
   services.avahi = {
     enable = true;

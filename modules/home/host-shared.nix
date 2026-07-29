@@ -1,13 +1,8 @@
 {
   pkgs,
-  inputs,
   ...
 }:
 {
-  imports = [ inputs.nix-index-database.homeModules.nix-index ];
-  # also wrap and install comma
-  inputs.nix-index-database.homeModules.nix-index.comma.enable = true;
-
   # only available on linux, disabled on macos
   services.ssh-agent.enable = true;
 
@@ -70,9 +65,8 @@
       enable = true;
       settings.user.name = "Will Flores";
     };
-    gnupg.agent = {
+    gpg = {
       enable = true;
-      enableSSHSupport = true;
     };
     # Add home-manager to the shell
     home-manager.enable = true;
@@ -96,7 +90,7 @@
     ripgrep-all.enable = true;
     ripgrep.enable = true;
     # Add ssh support
-    services.openssh.enable = true;
+    ssh.enable = true;
     starship = {
       enable = true;
       settings = {
