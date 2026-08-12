@@ -13,6 +13,10 @@
   ];
 
   # Bootloader.
+  # for testing purposes only, remove on bootable hosts.
+  boot.loader.grub.enable = pkgs.lib.mkDefault false;
+  fileSystems."/".device = pkgs.lib.mkDefault "/dev/null";
+  fileSystems."/".fsType = pkgs.lib.mkDefault "none";
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
