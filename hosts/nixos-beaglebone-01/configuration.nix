@@ -7,12 +7,10 @@
 {
   imports = [
     inputs.srvos.nixosModules.server
-    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t420
     flake.nixosModules.host-shared
     ./hardware-configuration.nix
   ];
 
-  # Bootloader.
   # for testing purposes only, remove on bootable hosts.
   boot.loader.grub.enable = pkgs.lib.mkDefault false;
   fileSystems."/".device = pkgs.lib.mkDefault "/dev/null";
@@ -35,8 +33,6 @@
       "fetch-tree"
     ];
   };
-
-  nixpkgs.hostPlatform.system = "x86_64-linux";
 
   # Configure keymap in X11
   services.xserver.xkb = {
