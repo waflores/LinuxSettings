@@ -2,7 +2,6 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 {
-  config,
   lib,
   modulesPath,
   ...
@@ -25,9 +24,6 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s25.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
-
-  nixpkgs.crossSystem.system = "aarch64-linux";
-  nixpkgs.hostPlatform = {
-    system = "aarch64-linux";
-  };
+  nixpkgs.buildPlatform = "x86_64-linux";
+  nixpkgs.hostPlatform = "aarch64-linux";
 }

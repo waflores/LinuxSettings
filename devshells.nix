@@ -1,9 +1,10 @@
 # Using mkShell from nixpkgs
 {
-  pkgs ? import <nixpkgs> { },
+  perSystem,
+  pkgs,
   ...
 }:
-pkgs.mkShell {
+perSystem.devshell.mkShell {
   name = "willsBluePrint";
   packages = with pkgs; [
     # keep-sorted start

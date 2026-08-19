@@ -28,8 +28,10 @@
     nixpkgs.url = "https://github.com/NixOS/nixpkgs/archive/422591dcb6727393ce7f69556ccfaa11dc850543.tar.gz"; # master - 2026-08-11
     srvos.inputs.nixpkgs.follows = "nixpkgs";
     srvos.url = "https://github.com/nix-community/srvos/archive/eea7edde7682348647d46e1b92ecae5c1de7da11.tar.gz";
+    systems.url = "github:nix-systems/triplet";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     treefmt-nix.url = "https://github.com/numtide/treefmt-nix/archive/ae7910970dddc408fe6ab1c8e4b277bb21d72dc0.tar.gz";
+
     # keep-sorted end
   }; # End inputs
 
@@ -37,10 +39,6 @@
     inputs:
     inputs.blueprint {
       inherit inputs;
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
       nixpkgs.config.allowUnfree = true;
       nixpkgs.config.allowUnfreePredicate =
         pkg: builtins.elem (inputs.nixpkgs.lib.getName pkg) [ "vscode" ];
