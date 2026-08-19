@@ -8,6 +8,7 @@
 }:
 
 {
+
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -24,6 +25,8 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s25.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
-  nixpkgs.buildPlatform = "x86_64-linux";
+
+  # https://discourse.nixos.org/t/recommended-style-to-cross-compile-flake-nixossystems/45305
+  # nixpkgs.buildPlatform.system = "x86_64-linux";
   nixpkgs.hostPlatform = "aarch64-linux";
 }
