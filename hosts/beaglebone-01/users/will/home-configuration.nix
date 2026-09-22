@@ -1,5 +1,5 @@
 { inputs, ... }:
 {
 
-  imports = [ inputs.self.homeModules.host-shared ];
+    imports = [ inputs.self.homeModules.host-shared ];
 }

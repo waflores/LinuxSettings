@@ -1,117 +1,117 @@
 {
-  inputs,
-  pkgs,
-  flake,
-  ...
+    inputs,
+    pkgs,
+    flake,
+    ...
 }:
 {
-  imports = [
-    inputs.srvos.nixosModules.desktop
-    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t420
-    flake.nixosModules.host-shared
-    ./hardware-configuration.nix
-  ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "nixos-thinkpad-01";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  nix = {
-    enable = true;
-    settings.trusted-users = [ "@wheel" ];
-    settings.extra-experimental-features = [
-      "nix-command"
-      "flakes"
-      "ca-derivations"
-      "fetch-tree"
-      # "repl-flake"
+    imports = [
+        inputs.srvos.nixosModules.desktop
+        inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t420
+        flake.nixosModules.host-shared
+        ./hardware-configuration.nix
     ];
-  };
 
-  nixpkgs.hostPlatform.system = "x86_64-linux";
+    # Bootloader.
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+    networking.hostName = "nixos-thinkpad-01";
 
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+    # Enable networking
+    networking.networkmanager.enable = true;
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+    nix = {
+        enable = true;
+        settings.trusted-users = [ "@wheel" ];
+        settings.extra-experimental-features = [
+            "nix-command"
+            "flakes"
+            "ca-derivations"
+            "fetch-tree"
+            # "repl-flake"
+        ];
+    };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+    nixpkgs.hostPlatform.system = "x86_64-linux";
 
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    # Enable the X11 windowing system.
+    services.xserver.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
+    # Enable the GNOME Desktop Environment.
+    services.displayManager.gdm.enable = true;
+    services.desktopManager.gnome.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+    # Configure keymap in X11
+    services.xserver.xkb = {
+        layout = "us";
+        variant = "";
+    };
 
-  system.stateVersion = pkgs.lib.versions.majorMinor pkgs.lib.version; # initial nixos state
+    # Enable CUPS to print documents.
+    services.printing.enable = true;
 
-  # on nixos this either isNormalUser or isSystemUser is required to create the user.
-  users.users.will = {
-    isNormalUser = true;
-    description = "Will Flores";
-    hashedPassword = "$6$a69Ua5IWrM6vFPtk$olkZzNeti8MosldO2.ijOSEcH713NHVeBBFk5lVoXjRj8xdu9QwLT1VFaXoU4L71JsbuMIAtcsG1PHHbD1DUb1";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "tss"
-      "docker"
-    ];
-  };
+    # Enable sound with pipewire.
+    services.pulseaudio.enable = false;
+    security.rtkit.enable = true;
+    services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+        # If you want to use JACK applications, uncomment this
+        #jack.enable = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+        # use the example session manager (no others are packaged yet so this is enabled by default,
+        # no need to redefine it in your config for now)
+        #media-session.enable = true;
+    };
 
-  # List services that you want to enable:
+    # Enable touchpad support (enabled default in most desktopManager).
+    # services.xserver.libinput.enable = true;
 
-  # Enable OctoPrint
-  services.octoprint.enable = true;
+    system.stateVersion = pkgs.lib.versions.majorMinor pkgs.lib.version; # initial nixos state
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+    # on nixos this either isNormalUser or isSystemUser is required to create the user.
+    users.users.will = {
+        isNormalUser = true;
+        description = "Will Flores";
+        hashedPassword = "$6$a69Ua5IWrM6vFPtk$olkZzNeti8MosldO2.ijOSEcH713NHVeBBFk5lVoXjRj8xdu9QwLT1VFaXoU4L71JsbuMIAtcsG1PHHbD1DUb1";
+        extraGroups = [
+            "networkmanager"
+            "wheel"
+            "tss"
+            "docker"
+        ];
+    };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-  services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
-  systemd.sleep.settings.Sleep = {
-    AllowSuspend = "no";
-    AllowHibernation = "no";
-    AllowHybridSleep = "no";
-    AllowSuspendThenHibernate = "no";
-  };
-  virtualisation.docker.enable = true;
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    # programs.mtr.enable = true;
+    # programs.gnupg.agent = {
+    #   enable = true;
+    #   enableSSHSupport = true;
+    # };
+
+    # List services that you want to enable:
+
+    # Enable OctoPrint
+    services.octoprint.enable = true;
+
+    # Enable the OpenSSH daemon.
+    services.openssh.enable = true;
+
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
+    services.logind.settings.Login.HandleLidSwitchExternalPower = "ignore";
+    systemd.sleep.settings.Sleep = {
+        AllowSuspend = "no";
+        AllowHibernation = "no";
+        AllowHybridSleep = "no";
+        AllowSuspendThenHibernate = "no";
+    };
+    virtualisation.docker.enable = true;
 }
