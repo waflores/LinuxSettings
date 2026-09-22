@@ -18,11 +18,11 @@ This document outlines the steps to create and configure a pre-commit hook that 
      ```bash
      #!/bin/bash
      # Strict pre-commit hook for NixOS/Homemanager configurations
-     # Ensures all .nix files are properly formatted using treefmt/nix fmt
-     
-     # Run treefmt on all .nix files
-     if ! treefmt --check; then
-         echo "❌ Formatting issues detected! Run: treefmt to fix them."
+     # Ensures all .nix files are properly formatted using nix fmt
+	
+     # Run nix fmt on all .nix files
+     if ! nix fmt *.nix; then
+         echo "❌ Formatting issues detected! Run: nix fmt to fix them."
          exit 1
      fi
      
@@ -48,8 +48,8 @@ This document outlines the steps to create and configure a pre-commit hook that 
      
      To ensure all configuration files are formatted correctly, a pre-commit hook is provided in the repository. This hook runs `treefmt` (treefmt-nix) on all `.nix` files in the repository. Before committing, the hook will:
      
-     1. Run `treefmt --check` to verify formatting correctness.
-     2. If formatting is needed, it will output instructions to run `treefmt`.
+     1. Run `nix fmt *.nix` to verify and apply formatting.
+     2. If formatting is needed, it will output the changes.
      3. If formatting issues are found, the commit will be aborted.
      
      To enable this hook, ensure the `pre-commit` script is present in `.git/hooks/` and is executable (`chmod +x .git/hooks/pre-commit`). The script should be included in the repository, as shown above.

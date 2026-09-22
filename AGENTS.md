@@ -173,7 +173,7 @@ The project uses these key inputs in [`flake.nix`](flake.nix):
 
 1. **VM doesn't boot**: Check hardware-configuration.nix for correct hardware detection
 2. **Home Manager errors**: Check host-specific home-configuration.nix
-3. **Formatting issues**: Run `treefmt` to format all files
+3. **Formatting issues**: Run `nix fmt` to format all files
 4. **Docker test failures**: Ensure Docker daemon is running
 
 ### Debug Commands

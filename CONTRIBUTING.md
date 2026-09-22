@@ -379,7 +379,7 @@ services.pipewire = {
 
 1. **Clean rebuild**: `nix-collect-garbage -d && nix flake lock && nix flake develop`
 2. **Check inputs**: Run `nix flake lock --update-input <input-name>`
-3. **Format code**: Run `treefmt` to fix formatting issues
+3. **Format code**: Run `nix fmt` to fix formatting issues
 
 ## Resources
 

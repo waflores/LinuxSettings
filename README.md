@@ -241,10 +241,10 @@ Code formatting is handled by `treefmt-nix`:
 
 ```bash
 # Format all files
-treefmt
+nix fmt
 
 # Format a specific file
-treefmt --glob "*.nix"
+nix fmt *.nix
 ```
 
 ### Running Tests
